@@ -112,7 +112,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #111f30;
+		background: linear-gradient(#1f3550, #0f0822);
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
