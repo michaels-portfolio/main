@@ -1,10 +1,17 @@
 <!DOCTYPE HTML>
-<title>Welcome!</title>
+<title>Michael Chow Sound Design Portfolio</title>
 <div id="REEL"></div>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Rubik+Spray+Paint&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Rubik+Spray+Paint&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -19,13 +26,14 @@
 				<!-- Header -->
 					<header id="header">
 						
-						<h1>MICHAEL CHOW AUDIO</h1><br/>
+						<h1 href="index.html">MICHAEL CHOW AUDIO</h1><br/>
 
 							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/LOGO.png" alt="" />
+								<a class="logo">
+									<span class="symbol"><button onclick="toggleDarkMode()"><img src="images/LOGO.png" alt="" /></button>
 								</a>
-								
+							
+
 								<!-- MY NAVIGATION BAR -->
 								<div class="NAVIGATION">
 								<nav>
@@ -34,9 +42,9 @@
 									<a href="#SOUNDDESIGN">SOUND DESIGN</a>
 									<a href="#ABOUTME">ABOUT</a>
 									
-									<a href="#" class="icon solid style2 fa-phone sussy-icon"></a>
-									<a href="#" class="icon solid style2 fa-envelope sussy-icon"></a>
-									<a href="#" class="icon brands style2 fa-github sussy-icon"></a>
+									<a href="tel:508-905-9534" class="icon solid style2 fa-phone sussy-icon"></a>
+									<a href="mailto:mikechowaudio@gmail.com" target="_blank" class="icon solid style2 fa-envelope sussy-icon"></a>
+									<a href="https://github.com/devvyyy" target="_blank" rel="noopener noreferrer" class="icon brands style2 fa-github sussy-icon"></a>
 									
 									</nav>
 								</div>
@@ -47,13 +55,13 @@
 					<div id="main">
 						<div class="inner">
 								
-
 							
-								<p><iframe class="demoreel" src="https://www.youtube.com/embed/CF4lle9DkiY?autoplay=1" allow="autoplay; picture-in-picture; clipboard-write; encrypted-media; gyroscope" width="75%" height="75%" allowfullscreen></iframe></p>
+								<p><iframe class="demoreel" src="https://www.youtube.com/embed/JK-3rPeX7hA?autoplay=1" allow="autoplay; picture-in-picture; clipboard-write; encrypted-media; gyroscope" width="75%" height="75%" allowfullscreen></iframe></p>
+								<a class="anchor" id="top">
 								<a name="SOUNDDESIGN"></a>
-								<h3>DEMO REEL</h3>
-								<p>Sound redesigns of portions of <b>Blizzard Entertainment</b>'s cinematic, <I>Kiriko</I> and <b>Riot Games</b>' animated series <i>Arcane</i>.</p>
-							
+								</a>
+								<p>Demo reel with 2 sound redesigns of portions of <b>Blizzard Entertainment</b>'s cinematic, <I>Kiriko</I>, and <b>Riot Games</b>' animated series <i>Arcane</i>.</p>
+
 
 								<div id="LABELTEXT">
 									<strong><h2>SOUND DESIGN</h2></strong>
@@ -73,11 +81,8 @@
 									</div>
 								</div>
 							</div>
-								
-								<h3>ABILITY SOUND REDESIGNS</h3>
-								<p>Sound redesigns of full ability kits from <I>League of Legends</I> by <b>Riot Games</b>.</p>
 
-
+								<button onclick="toggleDarkMode()">TEST TOGGLE</button>
 								<div class="container">
 									<div class="video">
 										<iframe src="https://www.youtube.com/embed/MiHF2pJmfFs" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" width="100%" height="100%" allowfullscreen></iframe>
@@ -87,17 +92,23 @@
 									</div>
 								</div>
 							
+							<p>Videos of sound redesigns of full ability kits from <I>League of Legends</I> by <b>Riot Games</b>.</p>
+
+								<p><iframe class="demoreel" src="https://www.youtube.com/embed/JgfmuBbdQ2w" allow="autoplay; picture-in-picture; clipboard-write; encrypted-media; gyroscope" width="75%" height="75%" allowfullscreen></iframe></p>
+								<p>Video of a sound redesign of <b>Blizzard Entertainment</b>'s cinematic, <I>Kiriko</I>.</p>
 							<div id="LABELTEXT"><strong><h2>ABOUT ME</h2></strong></div>
 							<div id="ABOUTME">
-							<blockquote><p>[Open Sans] Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></blockquote>
+							<blockquote><p>Hi! I'm Michael, </p></blockquote>
 							</div>
 
 							<div id="LABELTEXT"><strong><h2>CONTACT</h2></strong></div>
 							<div id="CONTACT">
 
 							<!--SNOW BG EFFECT-->
-							<div hidden class="snow"></div>
-							
+							<div class="snow">
+							<canvas class="snow1"></canvas>
+							<canvas class="snow2"></canvas>
+						</div>
 
 						</div>
 						</div>
@@ -105,10 +116,12 @@
 				</div>
 
 				<ul class="icons">
-					<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
-					<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
-					<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="tel:508-905-9534" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+					<li><a href="mailto:mikechowaudio@gmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+					<li><a href="https://github.com/devvyyy" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
 
+
+					
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>

@@ -105,17 +105,71 @@ input, select, textarea {
 
 	html {
 		box-sizing: border-box;
+		min-height: 100%;
+		position: relative;
+		scroll-behavior: smooth;
 	}
 	
+
+	body {
+		height: 100%;
+		width: 100%;
+		background-image: linear-gradient(#1f3550, #0f0822); min-height: 100%;
+		margin: auto;
+		background-size: cover;
+		background-repeat: repeat-x
+	}
 
 	*, *:before, *:after {
 		box-sizing: inherit;
 	}
 
-	body {
-		background: linear-gradient(#1f3550, #0f0822); min-height: 100%;
-		margin: auto;
-		background-size: cover
+	.rubik-wet-paint-regular {
+		font-family: "Rubik Wet Paint", system-ui;
+		font-weight: 400;
+		font-style: normal;
+	}
+
+.oswald-awesome {
+	font-family: "Oswald", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+}
+
+	.dark-mode {
+		background: rgb(38,47,109);
+		background: radial-gradient(circle, rgba(38,47,109,1) 0%, rgba(2,10,23,1) 50%, rgba(32,56,118,1) 100%); 
+		iframe {
+			border:4px solid rgb(186, 226, 240);
+			filter: drop-shadow(0 0 2.5px rgb(237, 177, 215));
+		}
+		h1 {
+			font-family: "Oswald";
+			color: rgb(160, 212, 179);
+			filter: drop-shadow(0 0 1.5px rgb(237, 177, 215));
+			font-size: 1.75em;
+			font-weight: 400;
+			line-height: 1.3;
+			letter-spacing: 0.105em;
+	}
+		h2 {
+		color: rgb(160, 212, 179);
+		filter: drop-shadow(0 0 1.5px rgb(237, 177, 215));
+		}
+		p {
+			color: rgb(160, 212, 179);
+		}
+		a {
+			color: rgb(160, 212, 179);
+		}
+		.snow {
+			display: block;
+		}
+	}
+
+	.hidden {
+		display: none;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -142,6 +196,10 @@ a:visited {
   /* mouse over link */
 a:hover {
 	color: rgb(229, 137, 183);
+	border-bottom-color: transparent;
+	color: #f2849e !important;
+	transform: scale(1.1);
+	transition: 0.2s ease-in-out;
 }
 
   /* selected link */
@@ -185,11 +243,6 @@ a:active {
 		border-bottom: dotted 1px rgba(88, 88, 88, 0.5);
 	}
 
-		a:hover {
-			border-bottom-color: transparent;
-			color: #f2849e !important;
-		}
-
 	strong, b {
 		font-weight: 900;
 	}
@@ -199,7 +252,7 @@ a:active {
 	}
 
 	p {
-		margin: 0em 0 1em 0;
+		margin: 1em 0 1em 0;
 		z-index: 1;
 		color: rgb(200, 212, 234);
 		text-align: center;
@@ -212,10 +265,11 @@ a:active {
 		font-size: 1.75em;
 		font-weight: 700;
 		line-height: 1.3;
-		margin: -1.85em 0em 0em 2.5em;
+		margin: -1.5em 0em -3em 2.5em;
 		letter-spacing: 0.015em;
-		padding: 15px 0;
+		padding: 0em 0;
 		filter: drop-shadow(0 0 0.5px rgb(200, 212, 234));
+		box-sizing: border-box;
 		
 	}
 
@@ -329,6 +383,12 @@ a:active {
 		text-align: center
     }
 
+	a.anchor {
+		display: block;
+		position: relative;
+		top: 300px;
+		visibility: hidden;
+	}
 
 	code {
 		background: rgba(144, 144, 144, 0.075);
@@ -2205,8 +2265,10 @@ a:active {
 		}
 
 		.snow {
-			width: 100vw;
-			height: 100vh;
+			display: none;
+			text-align: center;
+			width: 0vw;
+			height: 0vh;
 			position: fixed;
 			background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50%3B' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st1%7Bopacity:0.3%3Bfill:%23FFFFFF%3B%7D.st3%7Bopacity:0.1%3Bfill:%23FFFFFF%3B%7D%3C/style%3E%3Ccircle class='st1' cx='5' cy='8' r='1'/%3E%3Ccircle class='st1' cx='38' cy='3' r='1'/%3E%3Ccircle class='st1' cx='12' cy='4' r='1'/%3E%3Ccircle class='st1' cx='16' cy='16' r='1'/%3E%3Ccircle class='st1' cx='47' cy='46' r='1'/%3E%3Ccircle class='st1' cx='32' cy='10' r='1'/%3E%3Ccircle class='st1' cx='3' cy='46' r='1'/%3E%3Ccircle class='st1' cx='45' cy='13' r='1'/%3E%3Ccircle class='st1' cx='10' cy='28' r='1'/%3E%3Ccircle class='st1' cx='22' cy='35' r='1'/%3E%3Ccircle class='st1' cx='3' cy='21' r='1'/%3E%3Ccircle class='st1' cx='26' cy='20' r='1'/%3E%3Ccircle class='st1' cx='30' cy='45' r='1'/%3E%3Ccircle class='st1' cx='15' cy='45' r='1'/%3E%3Ccircle class='st1' cx='34' cy='36' r='1'/%3E%3Ccircle class='st1' cx='41' cy='32' r='1'/%3E%3C/svg%3E");
 			background-position: 0px 0px;
@@ -2225,6 +2287,23 @@ a:active {
 			100% {
 			background-position: 0px 1000px;
 			}
+		}
+/*
+		html, body {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+		}
+*/
+
+		canvas {
+			padding: 0;
+			margin: 0;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			position: absolute;
 		}
 
 
@@ -2555,24 +2634,31 @@ a:active {
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 		background-color: transparent;
-		border-radius: 4px;
+		border-radius: 0px;
 		border: 0;
-		box-shadow: inset 0 0 0 2px #585858;
-		color: #585858 !important;
+		box-shadow: inset 0 0 0 2px #c7040400;
+		color: #00ff5e00 !important;
 		cursor: pointer;
 		display: inline-block;
 		font-size: 0.8em;
-		font-weight: 900;
-		height: 3.5em;
-		letter-spacing: 0.35em;
-		line-height: 3.45em;
+		font-weight: 0em;
+		height: 0em;
+		letter-spacing: 0em;
+		line-height: 0em;
 		overflow: hidden;
-		padding: 0 1.25em 0 1.6em;
+		padding: 0 0em 0 0em;
 		text-align: center;
 		text-decoration: none;
 		text-overflow: ellipsis;
 		text-transform: uppercase;
 		white-space: nowrap;
+	}
+
+	img {
+		transition: transform .7s ease-in-out;
+	}
+	img:hover {
+		transform: rotate(360deg);
 	}
 
 		input[type="submit"].icon:before,
@@ -2945,17 +3031,16 @@ a:active {
 		position: sticky;
 		z-index: 5;
 		top: 0;
-
-
-
+		box-sizing: border-box;
 	}
 
 				#header .logo .symbol img { /* THIS IS THE LOGO */
 					display: block;
-					margin: 0.85em 0 0 1.25em;
+					margin: 1.5em 0 0 1.25em;
 					width: 3em;
 					height: 3em;
 					filter: drop-shadow(0 0 1.5px rgb(200, 212, 234));
+					transition: transform .7s ease-in-out;
 				}
 
 		#header nav {
@@ -3307,7 +3392,7 @@ a:active {
 	#ABOUTME {
 	color: #a6d9d0;
 	font-family: 'Open Sans', Verdana, sans-serif;
-	font-size: 16pt;
+	font-size: 20pt;
 	font-weight: 300;
 	line-height: 1.75;
 	padding: 0em 0 0em 0 ;
@@ -3321,20 +3406,17 @@ a:active {
 
 	}
 
-	a:hover {
-		text-decoration: none;
-		}
-
-
 	.NAVIGATION {
 		margin: -1em 0 0em 0em;
+		box-sizing: border-box;
 		}
 	
 	.NAVIGATION a{
 		color: #a6d9d0;
 		text-decoration: none;
 		letter-spacing: 0.055em;
-		margin: 0 0 0em 0.8em;
+		margin: -10em 0 0em 0.8em;
+		box-sizing: border-box;
 		}
 
 	.leftvideo {
