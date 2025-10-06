@@ -28,6 +28,59 @@
 						
 						<h1><a href="index.html">MICHAEL CHOW AUDIO</h1></a><br/>
 
+						<!-- POP UP STUFFFFF -->
+    <style>
+        .welcome-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 25px 40px;
+            border-radius: 12px;
+            z-index: 10000;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3em;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+            cursor: pointer;
+            max-width: 90vw;
+            box-sizing: border-box; 
+            border: 2px solid #c8d4ea;
+        }
+
+        .welcome-popup p {
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* hide it */
+        .welcome-popup.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* extra stuff */
+        @media (max-width: 600px) {
+            .welcome-popup {
+                width: 85%;
+                padding: 20px 25px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- awesome popup -->
+    <div id="welcomePopup" class="welcome-popup">
+        <p>Click the logo to make it snow!</p>
+    </div>
+
 							<!-- Logo -->
 								<a class="logo">
 									<span class="symbol"><button onclick="toggleDarkMode()"><img src="images/LOGO.png" alt="" /></button>
@@ -62,16 +115,13 @@
 						<div class="inner">
 								
 							
-								<p><iframe class="demoreel" src="https://www.youtube.com/embed/xr6jvF7UfH0?autoplay=1" allow="autoplay; picture-in-picture; clipboard-write; encrypted-media; gyroscope" width="75%" height="75%" allowfullscreen></iframe></p>
-								<a class="anchor" id="top">
-								<a name="SOUNDDESIGN"></a>
-								</a>
+								<p><iframe class="demoreel" src="https://www.youtube.com/embed/maNY39Nbj4Y?autoplay=1" allow="autoplay; picture-in-picture; clipboard-write; encrypted-media; gyroscope" width="75%" height="75%" allowfullscreen></iframe></p>
 
-
-								<div id="LABELTEXT">
-									<strong><h2>SOUND DESIGN</h2></strong>
-									</div>
-							
+<div id="SOUNDDESIGN"> <!-- make this less bad lol -->
+    <div id="LABELTEXT">
+        <strong><h2>SOUND DESIGN</h2></strong>
+    </div>
+</div>
 							
 								<div class="container">
 									<div class="video">
@@ -102,7 +152,7 @@
 							<div id="ABOUTME">
 								<p>Hello! I’m Mike, a student at Northeastern University. I’ve always liked how audio could build narratives, whether it’s through film, TV, and especially games! Sound design has always been a passion of mine, and it’s because I want people to ask the same things I asked when I started: “That sounded awesome! How’d they do that?” I mainly come from a film and television background, where I specialize in recording foley, field recordings, and working audio in live broadcasts, but I know I want to expand my experience and skills into something in the gaming industry. Sound design, with its focus on immersion and narrative, seems to be the natural fit for me.</p>
 								<p>I also like
-									<a href="gamedev/index.html">making games!</a>
+									<a href="gamedev/index.html">game design and pixel art!</a>
 								</p>
 							
 							</div>
@@ -134,6 +184,26 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+            <!-- 2. THE NEW JAVASCRIPT FOR THE POPUP -->
+            <script>
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const popup = document.getElementById('welcomePopup');
+
+                    if (popup) {
+                        // The popup is initially visible due to CSS.
+                        // Automatically hide the popup after 1 second
+                        setTimeout(() => {
+                            popup.classList.add('hidden'); // Add the 'hidden' class to trigger fade-out
+                        }, 1000); // 1000 milliseconds = 1 second
+
+                        // Optional: Hide the popup immediately if the user clicks it
+                        popup.addEventListener('click', () => {
+                            popup.classList.add('hidden');
+                        });
+                    }
+                });
+            </script>
 
 	</body>
 </html>

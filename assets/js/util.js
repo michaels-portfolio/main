@@ -70,27 +70,29 @@ function toggleDarkMode() {
 
 	};
 
-	$('a[href^="#"]').click(function (event) {
-		event.preventDefault(); // Prevent default link behavior
+$('a[href^="#"]').click(function (event) {
+    event.preventDefault(); // Prevent default link behavior
+
+    let target = $(this.getAttribute('href'));
+    
+    if (target.length) {
+        $('html, body').animate({
+            scrollTop: target.offset().top
+        }, 500);
+    }
+});
 	
-		let target = $('[name="' + $.attr(this, 'href').substr(1) + '"]');
-		
-		if (target.length) {
-			$('html, body').animate({
-				scrollTop: target.offset().top
-			}, 500);
-		}
-	});
-	
-	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-		anchor.addEventListener('click', function (e) {
-			e.preventDefault();
-	
-			document.querySelector(this.getAttribute('href')).scrollIntoView({
-				behavior: 'smooth'
-			});
-		});
-	});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
 
 	/**
 	 * Panel-ify an element.
