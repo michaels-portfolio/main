@@ -1,3 +1,4 @@
+
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
 
@@ -40,6 +41,74 @@ footer, header, hgroup, menu, nav, section {
 	font-variation-settings:
 		"wdth" 100;
 	}
+
+	/* cool banner (the performative ahh png) above about me*/
+.banner-container {
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+/* make banner pretty when animated lol */
+.banner-img {
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    position: static; 
+    z-index: 1;
+    /* transition should be smooth (though its hidden i think by the white flash?) */
+    transition: transform 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+    border: 3px solid transparent;
+}
+
+/* normal mode hover: lift up slightly */
+body:not(.dark-mode) .banner-img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+}
+
+/* --- SNOW MODE STUFF: makes banner like snow --- */
+.dark-mode .banner-img {
+    /* desaturates, tints blue, and dims (like... icy/frozen idk man) */
+    filter: grayscale(50%) sepia(20%) hue-rotate(180deg) brightness(0.8) contrast(1.1);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(186, 226, 240, 0.2);
+}
+
+/* bring all the color back on normal mode */
+.dark-mode .banner-img:hover {
+    /* undo above */
+    filter: grayscale(0%) sepia(0%) hue-rotate(0deg) brightness(1.1) contrast(1.0); 
+    border-color: rgba(186, 226, 240, 0.9);
+    box-shadow: 0 0 40px rgba(186, 226, 240, 0.6);
+    transform: scale(1.02) translateY(-5px); /* zooms in slightly and floats up */
+}
+
+/* --- BLIZZARD EFFECT (the white flash) --- */
+#blizzard-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* an icy white-blue gradient */
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(186,226,240,1) 100%);
+    z-index: 100000; /* NEEDS TO BE ABOVE EVERYTHING */
+    opacity: 0;
+    pointer-events: none; /* lets you click through it when it's invisible/on top*/
+    transition: opacity 0.3s ease-in-out;
+}
+
+#blizzard-overlay.active {
+    opacity: 1;
+}
+
+/* makes site transition when colors change */
+body, h1, h2, p, a, .box {
+    transition: background 0.1s ease, color 0.1s ease, filter 0.1s ease, border 0.1s ease;
+}
 	
 
 body {
@@ -127,14 +196,18 @@ input, select, textarea {
 	} 
 	
 
-	body {
-		height: 100%;
-		width: 100%;
-		background-image: linear-gradient(#1f3550, #0f0822); min-height: 100%;
-		margin: auto;
-		background-size: cover;
-		background-repeat: repeat-x
-	}
+body {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    margin: auto;
+    /* wait, gonna make old snow mode into default for cool gradient */
+    background: rgb(38,47,109);
+    background: radial-gradient(circle, rgba(38,47,109,1) 0%, rgba(2,10,23,1) 50%, rgba(32,56,118,1) 100%); 
+    background-size: cover;
+    background-attachment: fixed; /* smooth gradient */
+    background-repeat: no-repeat;
+}
 
 	*, *:before, *:after {
 		box-sizing: inherit;
@@ -161,41 +234,85 @@ input, select, textarea {
 }
 
 
-	.dark-mode {
-		background: rgb(38,47,109);
-		background: radial-gradient(circle, rgba(38,47,109,1) 0%, rgba(2,10,23,1) 50%, rgba(32,56,118,1) 100%); 
-		iframe {
-			border:4px solid rgb(186, 226, 240);
-			filter: drop-shadow(0 0 3px rgb(237, 177, 215));
-		}
-		h1 {
-			font-family: "Montserrat";
-			color: rgb(160, 212, 179);
-			filter: drop-shadow(0 0 2.5px rgb(237, 177, 215));
-			font-size: 1.75em;
-			font-weight: 450;
-			line-height: 1.3;
-			letter-spacing: 0.065em;
-			text-decoration: none;
-	}
-		h1 a{
-			text-decoration: none;
-		}
+/* EPIC NEW SNOW MODE !! */
+.dark-mode {
+    /* snowy arcticy gradient */
+    background: linear-gradient(135deg, #0b192c 0%, #1a365d 50%, #4a7c9d 100%);
+    background-attachment: fixed;
+}
 
-		h2 {
-		color: rgb(160, 212, 179);
-		filter: drop-shadow(0 0 1.5px rgb(237, 177, 215));
-		}
-		p {
-			color: rgb(160, 212, 179);
-		}
-		a {
-			color: rgb(160, 212, 179);
-		}
-		.snow {
-			display: block;
-		}
-	}
+/* make the header also match the icy vibe */
+.dark-mode #header {
+    background-color: rgba(11, 25, 44, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* text should be icy and glowy */
+.dark-mode h1, 
+.dark-mode h2, 
+.dark-mode #LABELTEXT {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(186, 226, 240, 0.8), 0 0 20px rgba(186, 226, 240, 0.4);
+    filter: none;
+}
+
+.dark-mode p {
+    color: #e0f2fe; /* Soft frost blue so it's easy to read */
+}
+
+.dark-mode a {
+    color: #bce3ff;
+}
+
+.dark-mode a:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 10px #ffffff;
+}
+
+/* frosted glass looking ahh video borders */
+.dark-mode iframe {
+    border: 4px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px; /* slightly rounded corners look super modern i think.... */
+    box-shadow: 0 0 25px rgba(186, 226, 240, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
+    filter: none;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode iframe:hover {
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 35px rgba(186, 226, 240, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* turn on SNOW MODE here */
+.dark-mode .snow {
+    display: block;
+}
+
+/* --- about me with the SNOW MODE frosted glass card looking thing (the box) --- */
+.dark-mode #ABOUTME {
+    /* arctic deep blue */
+    background: rgba(11, 25, 44, 0.65); 
+    
+    /* blurs everything behind box (so the snow and bg) */
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    
+    /* Card styling */
+    border-radius: 16px;
+    padding: 3em 2em; /* Gives the text room to breathe */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+    
+    /* Smooth transition when toggling modes */
+    transition: background 0.5s ease, backdrop-filter 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Ensure the normal mode has a smooth transition too */
+#ABOUTME {
+    transition: background 0.5s ease, backdrop-filter 0.5s ease, box-shadow 0.5s ease;
+    border: 1px solid transparent; /* Prevents layout shifting */
+}
 
 	.hidden {
 		display: none;
@@ -211,6 +328,17 @@ input, select, textarea {
 			-ms-transition: none !important;
 			transition: none !important;
 		}
+
+.banner-container {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.banner-img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
 
  /* unvisited link */
 a:link {
@@ -2309,7 +2437,7 @@ a:active {
 			background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50%3B' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st1%7Bopacity:0.3%3Bfill:%23FFFFFF%3B%7D.st3%7Bopacity:0.1%3Bfill:%23FFFFFF%3B%7D%3C/style%3E%3Ccircle class='st1' cx='5' cy='8' r='1'/%3E%3Ccircle class='st1' cx='38' cy='3' r='1'/%3E%3Ccircle class='st1' cx='12' cy='4' r='1'/%3E%3Ccircle class='st1' cx='16' cy='16' r='1'/%3E%3Ccircle class='st1' cx='47' cy='46' r='1'/%3E%3Ccircle class='st1' cx='32' cy='10' r='1'/%3E%3Ccircle class='st1' cx='3' cy='46' r='1'/%3E%3Ccircle class='st1' cx='45' cy='13' r='1'/%3E%3Ccircle class='st1' cx='10' cy='28' r='1'/%3E%3Ccircle class='st1' cx='22' cy='35' r='1'/%3E%3Ccircle class='st1' cx='3' cy='21' r='1'/%3E%3Ccircle class='st1' cx='26' cy='20' r='1'/%3E%3Ccircle class='st1' cx='30' cy='45' r='1'/%3E%3Ccircle class='st1' cx='15' cy='45' r='1'/%3E%3Ccircle class='st1' cx='34' cy='36' r='1'/%3E%3Ccircle class='st1' cx='41' cy='32' r='1'/%3E%3C/svg%3E");
 			background-position: 0px 0px;
 			animation: animatedBackground 30s linear infinite;
-			z-index: -100000;
+			z-index: -1;
 			top: 0;
 			left: 0;
 			pointer-events: none;
@@ -2697,6 +2825,7 @@ a:active {
 	}
 	#header .logo .symbol img:hover {
 		transform: rotate(360deg);
+		filter: drop-shadow(0 0 8px rgb(186, 226, 240)); /* snowww */
 	}
 
 		input[type="submit"].icon:before,
@@ -3054,7 +3183,7 @@ a:active {
 
 		}
 
-		img {
+		img {  /* okay so this OBLITERATES the banner unless overridden; but required for logo....... */
 			position: absolute;
 			left: 0px;
 			top: 0px;
@@ -3421,11 +3550,11 @@ a:active {
 			margin: 10px;
 			z-index: 1;
 		}
-		iframe {
-			z-index: 2;
-			border:4px solid rgb(200, 212, 234);
-			aspect-ratio: 16 / 9; /* maintain a 16:9 aspect ratio */
-		}
+iframe {
+    z-index: 2;
+    aspect-ratio: 16 / 9;
+    border: none; /* Remove border from here */
+}
 
 	#LABELTEXT {
 	color: #a6d9d0;
@@ -3661,7 +3790,7 @@ a:active {
 
 		}
 
-/* Wrapper */
+/* wrapper */
 
 	#wrapper > * > .inner {
 		width: 100%;
@@ -3677,3 +3806,415 @@ a:active {
 			}
 
 		}
+
+/* =========================================
+   NEW COOL AND EPIC HEADER
+   ========================================= */
+
+/* base header */
+#header {
+    position: sticky !important; 
+    top: 0 !important;
+    z-index: 10000 !important;
+    padding: 0 !important; 
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    transition: background 0.5s ease, border 0.5s ease;
+    
+    /* default header PATTERN! yippee! we grid */
+    background-color: #151515;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border-bottom: 2px solid #333;
+}
+
+/* snow mode HEADER */
+body.dark-mode #header {
+    background-color: rgba(11, 25, 44, 0.95);
+    background-image: radial-gradient(rgba(186, 226, 240, 0.3) 1.5px, transparent 1.5px);
+    background-size: 15px 15px; 
+    border-bottom: 2px solid rgba(186, 226, 240, 0.5);
+    box-shadow: 0 0 15px rgba(186, 226, 240, 0.3);
+}
+
+/* i HATE flexbox !!!!!!!!!!!! */
+.header-inner {
+    max-width: 95% !important; /* used to be 1200 px but maybe this works better */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 20px;
+    height: 80px; 
+}
+
+/* logo and name */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* space between logo and name */
+    z-index: 10001; /* should make left side clickable? */
+}
+
+.logo-container {
+    cursor: pointer;
+    /* 0.5 is default spin speed */
+    transition: transform 0.7s ease-in-out; 
+    width: 60px !important;  
+    height: 60px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; 
+}
+
+.logo-container:hover {
+    transform: rotate(360deg) scale(1.1); 
+}
+
+/* force logo to function */
+#header .logo-container img {
+    position: relative !important; /* override position */
+    z-index: 10 !important; /* make it super frontish ig */
+    display: block !important;
+    width: 100% !important; /* needs to fit */
+    height: 100% !important; 
+    object-fit: contain !important; /* prevent stretching */
+    margin: 0 !important;
+    filter: drop-shadow(0 0 2px white);
+}
+
+/* title text yay! */
+#header h1.brand-name {
+    margin: 0 !important; 
+    padding: 0 !important;
+    font-size: 1.8rem !important; 
+    line-height: 1 !important;
+    letter-spacing: 2px !important;
+    white-space: nowrap !important; /* looked ugly */
+}
+
+#header h1.brand-name a {
+    border-bottom: none !important; 
+}
+
+/* desktop navigation */
+#header nav.desktop-nav {
+    position: relative !important; 
+    right: auto !important;
+    top: auto !important;
+    display: flex !important;
+    align-items: center;
+    gap: 25px;
+    margin: 0 !important;
+}
+
+/* link text */
+#header nav.desktop-nav a {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1.4rem !important; /* bigger size */
+    font-weight: 600 !important;
+    color: #a6d9d0 !important;
+    background: transparent !important; 
+    border-bottom: none !important; 
+    padding: 0 !important;
+    height: auto !important;
+    line-height: normal !important;
+    letter-spacing: 1px !important;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#header nav.desktop-nav a:hover {
+    color: #f2849e !important;
+    transform: translateY(-2px);
+}
+
+.desktop-nav .divider {
+    color: rgba(255,255,255,0.2);
+    font-size: 1.2rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+/* le hamburger button thats hidden on pc */
+.hamburger {
+    display: none; 
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: #a6d9d0 !important;
+    font-size: 1.8rem !important;
+    cursor: pointer;
+    padding: 0 !important;
+}
+
+/* mobile dropdown */
+.mobile-nav {
+    display: none; 
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+}
+
+.mobile-nav.active {
+    display: flex; 
+    animation: slideDown 0.3s ease-out;
+}
+
+.mobile-nav a {
+    padding: 15px 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    color: white !important;
+}
+
+.mobile-socials {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   MOBILE STUFF WITH FANCY HEADER OOOOOH
+   ========================================= */
+@media screen and (max-width: 768px) {
+    #header nav.desktop-nav {
+        display: none !important;
+    }
+    
+    .hamburger {
+        display: block !important;
+    }
+
+    .logo-container {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    
+    #header h1.brand-name {
+        font-size: 1.3rem !important; 
+    }
+}
+
+/* start hidden and slightly down */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* state when it becomes visible */
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* cool epic glitch effect */
+h1:hover, h2:hover, #LABELTEXT:hover {
+    animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    color: #f2849e; /* turns pink on glitch */
+    text-shadow: 2px 0 #a6d9d0, -2px 0 #ff00c1;
+}
+
+@keyframes glitch-skew {
+    0% { transform: skew(0deg); }
+    20% { transform: skew(-2deg); }
+    40% { transform: skew(2deg); }
+    60% { transform: skew(-1deg); }
+    80% { transform: skew(1deg); }
+    100% { transform: skew(0deg); }
+}
+
+/* VIDEO/IFRAME STUFF YAY */
+iframe {
+    /* dupe? */
+    border: 2px solid #a6d9d0; /* base teal color */
+    box-shadow: 0 0 10px rgba(166, 217, 208, 0.2); /* soft glow */
+    transition: all 0.4s ease-in-out;
+}
+
+/* pulse on hover */
+iframe:hover {
+    border-color: #f2849e; /* Change to pink */
+    box-shadow: 0 0 25px rgba(242, 132, 158, 0.6), inset 0 0 15px rgba(242, 132, 158, 0.2);
+    transform: scale(1.01); /* Tiny zoom */
+}
+
+/* snow mode! */
+body.dark-mode iframe {
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 15px rgba(186, 226, 240, 0.4);
+}
+
+body.dark-mode iframe:hover {
+    border-color: #ffffff;
+    box-shadow: 0 0 30px rgba(186, 226, 240, 0.9);
+}
+
+.audio-visualizer {
+    display: inline-flex;
+    align-items: flex-end;
+    height: 30px;
+    gap: 3px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
+.audio-visualizer span {
+    width: 6px;
+    background: #a6d9d0;
+    animation: bounce 1s infinite ease-in-out;
+}
+
+/* make bars bounce at diff speeds holy lucio */
+.audio-visualizer span:nth-child(1) { height: 60%; animation-duration: 0.8s; }
+.audio-visualizer span:nth-child(2) { height: 30%; animation-duration: 1.2s; }
+.audio-visualizer span:nth-child(3) { height: 100%; animation-duration: 1.0s; }
+.audio-visualizer span:nth-child(4) { height: 50%; animation-duration: 0.6s; }
+.audio-visualizer span:nth-child(5) { height: 80%; animation-duration: 0.9s; }
+
+/* turn pink on hover or in snow mode! */
+body.dark-mode .audio-visualizer span,
+h2:hover + .audio-visualizer span {
+    background: #f2849e; 
+    box-shadow: 0 0 10px #f2849e;
+}
+
+@keyframes bounce {
+    0%, 100% { height: 20%; }
+    50% { height: 100%; }
+}
+
+/* crt filter (cool and epic) */
+body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: -5001; /* should be behind everything except bg????? pls */
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none; /* lets you click through it in case i obliterated z index */
+}
+
+/* normal highlight */
+::selection {
+    background: #f2849e; /* pink bg highlight */
+    color: #ffffff; /* white text */
+}
+
+/* snow mode highlight */
+body.dark-mode ::selection {
+    background: #ffffff; /* white bg */
+    color: #0b192c; /* navyish text */
+}
+
+/* cool cursor follower? */
+#cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f2849e; /* pink ring but what if it was TEEMO?????? idk actually */
+    border-radius: 50%;
+    pointer-events: none; /* let clicks pass */
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+    mix-blend-mode: difference; /* cool color inversion effect */
+}
+
+/* hovering link */
+#cursor-follower.active {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(242, 132, 158, 0.3);
+    border-color: transparent;
+}
+
+/* hide on mobile bc idk what would happen if it was here */
+@media (max-width: 768px) {
+    #cursor-follower { display: none; }
+}
+
+/* snow mode color */
+body.dark-mode #cursor-follower {
+    border-color: #ffffff;
+}
+
+/* need this so the pseudo works */
+#header nav.desktop-nav a {
+    position: relative !important;
+}
+
+/* oooh invisible underline */
+#header nav.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px; /* distance from text */
+    left: 50%;
+    background-color: #f2849e; /* highlight color */
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+/* animate underline */
+#header nav.desktop-nav a:hover::after {
+    width: 100%; /* expands to full width */
+}
+
+/* snow mode underline */
+body.dark-mode #header nav.desktop-nav a::after {
+    background-color: #ffffff;
+}
+
+/* new anim for popup */
+@keyframes popupEnter {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95); /* starts smaller/invis */
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1); /* then becomes normal size */
+    }
+}
+
+/* intro anim */
+@keyframes cinematicFadeIn {
+    0% {
+        opacity: 0;
+        filter: blur(5px); /* starts slightly blurry */
+        transform: scale(0.98); /* starts slightly pushed back */
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+/* apply it to the entire wrapper (minus popup/blizzard bc thats above) */
+#wrapper {
+    animation: cinematicFadeIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}

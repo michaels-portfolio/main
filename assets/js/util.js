@@ -1,8 +1,33 @@
 
+// for the sfx stuff later
+// const freezeSound = new Audio('assets/audio/freeze.mp3'); 
+// const thawSound = new Audio('assets/audio/thaw.mp3'); 
+// freezeSound.volume = 0.5; thawSound.volume = 0.5;
+
 function toggleDarkMode() {
-	let isDark = document.body.classList.toggle('dark-mode');
-/**const element = document.querySelector(".symbol");
-	element.classList.toggle("hidden");*/
+    // grab blizzard overlay
+    const overlay = document.getElementById('blizzard-overlay');
+    
+    // then proc the flash
+    overlay.classList.add('active');
+    
+    // 3. WAIT 300 MS THEN SWAP THEME
+    setTimeout(() => {
+        
+        // swap to dark mode aka snow mode
+        let isDark = document.body.classList.toggle('dark-mode');
+        
+        // play sfx!
+        // if (isDark) {
+        //     freezeSound.currentTime = 0; freezeSound.play();
+        // } else {
+        //     thawSound.currentTime = 0; thawSound.play();
+        // }
+        
+        // 4. then fade from white to show new cool epic theme
+        overlay.classList.remove('active');
+        
+    }, 300);
 }
 
 (function($) {
@@ -81,18 +106,6 @@ $('a[href^="#"]').click(function (event) {
         }, 500);
     }
 });
-	
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
 
 	/**
 	 * Panel-ify an element.
@@ -646,3 +659,53 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 	};
 
 })(jQuery);
+
+// --- mobile hamburger menu toggle stuff ---
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (menuBtn && navMenu) {
+        menuBtn.addEventListener('click', () => {
+            // slide menu up/down via toggle
+            navMenu.classList.toggle('active');
+        });
+
+        // close menu when anything is clicked except lowk why are they using this menu actually
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+});
+
+// detect scrolling visibility
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+        }
+    });
+});
+
+// target sections/videos/paragraphs
+document.querySelectorAll('section, .video, p, #ABOUTME').forEach((el) => {
+    el.classList.add('reveal-on-scroll'); // add class so it doesnt get hidden
+    observer.observe(el);
+});
+
+const cursor = document.getElementById('cursor-follower');
+
+// move cursor
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+// add active class when hover
+document.querySelectorAll('a, button, .video, .logo-container').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+});

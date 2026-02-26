@@ -18,97 +18,109 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
+<!-- BLIZZARD OVERLAY NEEDS TO BE AT TOP FOR THE FLASH EFFECT -->
+<div id="blizzard-overlay"></div>
+
+							<!--SNOW BG EFFECT-->
+							<div class="snow">
+							<canvas class="snow1"></canvas>
+							<canvas class="snow2"></canvas>
+						</div>
+
+<!-- POP UP STYLES/HTML STUFF -->
+<style>
+    .welcome-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.85);
+        color: white;
+        padding: 25px 40px;
+        border-radius: 12px;
+        z-index: 100000;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.3em;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        cursor: pointer;
+        max-width: 90vw;
+        box-sizing: border-box;
+        border: 2px solid #c8d4ea;
+    	animation: popupEnter 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+    .welcome-popup p { margin: 0; line-height: 1.4; }
+    .welcome-popup.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    @media (max-width: 600px) {
+        .welcome-popup { width: 85%; padding: 20px 25px; font-size: 1.1em; }
+    }
+	
+</style>
+<div id="welcomePopup" class="welcome-popup">
+    <p>Click the logo to make it snow!</p>
+</div>		
+
 		<!-- Wrapper -->
 			<div id="wrapper">
 
+		<!-- COOL CURSOR THATS CUSTOM?? -->
+		<!-- <div id="cursor-follower"></div> -->
 				
-				
-				<!-- Header -->
-					<header id="header">
-						
-						<h1><a href="index.html">MICHAEL CHOW AUDIO</h1></a><br/>
+<!-- Header -->
+<header id="header">
+    <div class="header-inner">
+        
+        <!-- LEFT SIDE IS LOGO + NAME !!!-->
+        <div class="header-left">
+            <!-- LOGO -->
+            <div class="logo-container" onclick="toggleDarkMode()" title="Click for Snow!">
+                <img src="images/LOGO.png" alt="Logo" />
+            </div>
+            
+            <!-- NAME -->
+            <h1 class="brand-name"><a href="index.html">MICHAEL CHOW AUDIO</a></h1>
+        </div>
 
-						<!-- POP UP STUFFFFF -->
-    <style>
-        .welcome-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.85);
-            color: white;
-            padding: 25px 40px;
-            border-radius: 12px;
-            z-index: 10000;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3em;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-            cursor: pointer;
-            max-width: 90vw;
-            box-sizing: border-box; 
-            border: 2px solid #c8d4ea;
-        }
+        <!-- RIGHT SIDE NAV STUFF -->
+<nav class="desktop-nav">
+    <a href="#REEL">DEMO</a>
+    <a href="#SOUNDDESIGN">SOUND DESIGN</a>
+    <a href="#ABOUTME">ABOUT</a>
+    
+    <!-- RESUME LINK -->
+    <!-- 'target="_blank"' opens in a new tab!!!11 -->
+    <a href="resume/ChowResume.pdf" target="_blank">RESUME</a>
+    
+    <span class="divider">|</span>
 
-        .welcome-popup p {
-            margin: 0;
-            line-height: 1.4;
-        }
+            <div class="social-icons">
+                <a href="tel:508-905-9534" class="icon solid fa-phone" title="Call Me"></a>
+                <a href="mailto:mikebchow@gmail.com" target="_blank" class="icon solid fa-envelope" title="Email Me"></a>
+				<a href="https://www.linkedin.com/in/mikethemicguy" target="_blank" class="icon brands fa-linkedin" title="LinkedIn"></a>
+				<a href="http://github.com/devvyyy/" target="_blank" class="icon brands fa-github" title="GitHub"></a>
+			</div>
+        </nav>
 
-        /* hide it */
-        .welcome-popup.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        /* extra stuff */
-        @media (max-width: 600px) {
-            .welcome-popup {
-                width: 85%;
-                padding: 20px 25px;
-                font-size: 1.1em;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- awesome popup -->
-    <div id="welcomePopup" class="welcome-popup">
-        <p>Click the logo to make it snow!</p>
+        <!-- HAMBURGER FOR MOBILE -->
+        <button id="mobile-menu-btn" class="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
 
-							<!-- Logo -->
-								<a class="logo">
-									<span class="symbol"><button onclick="toggleDarkMode()"><img src="images/LOGO.png" alt="" /></button>
-									<!--<span class="symbol"><button onclick="location.href='#';"><img src="images/LOGO.png" alt="" /></button>-->
-								</a>
-
-								<!-- <div class="snowbutton">
-									<span class="snowsymbol"><button onclick="toggleDarkMode()"><img src="images/SNOWFLAKE.png" alt="" /></button>
-									</div> -->
-
-								<!-- MY NAVIGATION BAR -->
-								<div class="NAVIGATION">
-								<nav>
-									
-									<a href="#REEL">REEL</a>
-									<a href="#SOUNDDESIGN">SOUND DESIGN</a>
-									<a href="#ABOUTME">ABOUT</a>
-									
-									<a href="tel:508-905-9534" class="icon solid style2 fa-phone sussy-icon"></a>
-									<a href="mailto:mikechowaudio@gmail.com" target="_blank" class="icon solid style2 fa-envelope sussy-icon"></a>
-									
-									
-									</nav>
-								</div>
-
-								
-
-					</header>
+    <!-- MOBILE MENU -->
+    <nav id="mobile-menu" class="mobile-nav">
+        <a href="#REEL" onclick="closeMobileMenu()">DEMO</a>
+        <a href="#SOUNDDESIGN" onclick="closeMobileMenu()">SOUND DESIGN</a>
+        <a href="#ABOUTME" onclick="closeMobileMenu()">ABOUT</a>
+        <div class="mobile-socials">
+            <a href="tel:508-905-9534"><i class="fas fa-phone"></i> Call</a>
+            <a href="mailto:mikebchow@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </nav>
+</header>
 
 				<!-- Main -->
 					<div id="main">
@@ -120,6 +132,9 @@
 <div id="SOUNDDESIGN"> <!-- make this less bad lol -->
     <div id="LABELTEXT">
         <strong><h2>SOUND DESIGN</h2></strong>
+							<div class="audio-visualizer">
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
     </div>
 </div>
 							
@@ -149,22 +164,23 @@
 								<p><iframe class="demoreel" src="https://www.youtube.com/embed/7V253Y9N3xY" allow="picture-in-picture; clipboard-write; encrypted-media; gyroscope" width="75%" height="75%" allowfullscreen></iframe></p>
 
 							<div id="LABELTEXT"><strong><h2>ABOUT ME</h2></strong></div>
+							<div class="audio-visualizer">
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
 							<div id="ABOUTME">
+							    <div class="banner-container">
+							        <img src="images/banner.jpg" alt="banner" class="banner-img">
+							    </div>
 								<p>Hello! I’m Mike, a student at Northeastern University. I’ve always liked how audio could build narratives, whether it’s through film, TV, and especially games! Sound design has always been a passion of mine, and it’s because I want people to ask the same things I asked when I started: “That sounded awesome! How’d they do that?” I mainly come from a film and television background, where I specialize in recording foley, field recordings, and working audio in live broadcasts, but I know I want to expand my experience and skills into something in the gaming industry. Sound design, with its focus on immersion and narrative, seems to be the natural fit for me.</p>
-								<p>I also like
-									<a href="gamedev/index.html">game design and pixel art!</a>
 								</p>
 							
 							</div>
 
-							<div id="LABELTEXT"><strong><h2>CONTACT</h2></strong></div>
+							<div id="LABELTEXT"><strong><h2>CONTACT ME</h2></strong></div>
 							<div id="CONTACT">
 
-							<!--SNOW BG EFFECT-->
-							<div class="snow">
-							<canvas class="snow1"></canvas>
-							<canvas class="snow2"></canvas>
-						</div>
+								<br>  <!--hacky linebreak LOL-->
+
 
 						</div>
 						</div>
@@ -174,35 +190,40 @@
 				<ul class="icons">
 					<li><a href="tel:508-905-9534" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
 					<li><a href="mailto:mikechowaudio@gmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
-					<!--<li><a href="https://github.com/devvyyy" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>-->
+					<li><a href="https://github.com/devvyyy" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
 
 
-					
-		<!-- Scripts -->
+
+		<!-- SCRIPT STUFF -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-            <!-- 2. THE NEW JAVASCRIPT FOR THE POPUP -->
+            <!-- ACTUALY NEW js for popup AAAAAAAAAAAAAAAA kinda bad to dump it in here-->
             <script>
-                document.addEventListener('DOMContentLoaded', (event) => {
-                    const popup = document.getElementById('welcomePopup');
+document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('welcomePopup');
 
-                    if (popup) {
-                        // The popup is initially visible due to CSS.
-                        // Automatically hide the popup after 1 second
-                        setTimeout(() => {
-                            popup.classList.add('hidden'); // Add the 'hidden' class to trigger fade-out
-                        }, 1000); // 1000 milliseconds = 1 second
+    if (popup) {
+        // hide popup
+        const hidePopup = () => {
+            popup.classList.add('hidden');
+            // but make it so it doesnt insta fade
+            window.removeEventListener('scroll', hidePopup);
+        };
 
-                        // Optional: Hide the popup immediately if the user clicks it
-                        popup.addEventListener('click', () => {
-                            popup.classList.add('hidden');
-                        });
-                    }
-                });
+        // hide after 3.5 secs
+        setTimeout(hidePopup, 3500);
+
+        // OR when you scroll
+        window.addEventListener('scroll', hidePopup);
+        
+        // OR when clicked
+        popup.addEventListener('click', hidePopup);
+    }
+});
             </script>
 
 	</body>
