@@ -1,0 +1,401 @@
+/* =========================================================
+   GAME DESIGN PORTFOLIO, v2 (quieter, document-style)
+   ---------------------------------------------------------
+   Load AFTER ../assets/css/main.css.
+   Scoped to .pf / .pf-* so the audio page is untouched.
+   Design rules for this version:
+     - no cards, no glows, no pills, no badges, no fades
+     - thin rules separate things, like a design doc
+     - color only for links, numbers, and the photo
+   ========================================================= */
+
+:root {
+  --pf-ink: #e9edf5;                     /* main text */
+  --pf-soft: #bcc6d8;                    /* secondary text, still readable */
+  --pf-teal: #a6d9d0;
+  --pf-pink: #f2849e;
+  --pf-rule: rgba(233, 237, 245, 0.16);
+  --pf-serif: Georgia, "Times New Roman", serif;
+  --pf-sans: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  --pf-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  --pf-header-h: 100px;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ---------- Undo main.css globals inside this page ---------- */
+.pf, .pf-footer {
+  font-family: var(--pf-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--pf-ink);
+  text-align: left;
+}
+.pf p, .pf-footer p {
+  font-size: 1rem;
+  text-align: left;
+  color: var(--pf-ink);
+  margin: 0 0 1em;
+}
+.pf h1, .pf h2, .pf h3, .pf-footer h2 {
+  margin: 0;
+  text-align: left;
+  line-height: 1.2;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.pf ul, .pf-footer ul { margin: 0; padding: 0; list-style: none; }
+.pf ul li, .pf-footer li { padding-left: 0; }
+.pf a, .pf-footer a {
+  color: var(--pf-ink);
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration-color: var(--pf-pink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.pf a:hover, .pf-footer a:hover { color: var(--pf-pink) !important; transform: none; }
+.pf img, .pf-lightbox img {
+  position: static;
+  left: auto;
+  top: auto;
+  z-index: auto;
+  max-width: 100%;
+}
+.pf strong { font-weight: 700; color: #fff; }
+
+/* util.js fades sections/paragraphs in on scroll; this version doesn't */
+.pf .reveal-on-scroll { opacity: 1 !important; transform: none !important; }
+
+/* ---------- Header fixes (shared header from main.css) ---------- */
+#header .pf-hamburger {                 /* main.css makes every <button> 0px tall */
+  height: auto !important;
+  line-height: 1 !important;
+  overflow: visible !important;
+  width: auto;
+  min-width: 44px;
+  min-height: 44px;
+}
+#header .pf-hamburger:hover { box-shadow: none !important; }
+@media (max-width: 1150px) and (min-width: 769px) {
+  #header nav.desktop-nav { gap: 16px; }
+  #header nav.desktop-nav a { font-size: 1.05rem !important; }
+  #header h1.brand-name { font-size: 1.4rem !important; }
+}
+.mobile-nav a:hover { transform: none; }
+
+/* ---------- TODO highlighter (delete the span once filled) ---------- */
+.pf-todo {
+  background: rgba(255, 214, 10, 0.14);
+  outline: 1px dashed rgba(255, 214, 10, 0.75);
+  color: #ffe58a;
+  padding: 0 0.3em;
+}
+
+/* ---------- Page ---------- */
+.pf {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px 72px;
+}
+.pf-section {
+  padding-top: 64px;
+  scroll-margin-top: var(--pf-header-h);
+}
+.pf h2.pf-h2 {
+  font-family: var(--pf-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  padding-bottom: 12px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid var(--pf-rule);
+}
+.pf-measure { max-width: 44rem; }       /* comfortable reading width */
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+.pf-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 56px;
+  align-items: end;
+  padding: 64px 0 56px;
+  border-bottom: 1px solid var(--pf-rule);
+}
+.pf h1.pf-name {
+  font-family: var(--pf-serif);
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.pf .pf-role {
+  font-size: 1.1rem;
+  color: var(--pf-teal);
+  margin-bottom: 26px;
+}
+.pf .pf-intro { font-size: 1.08rem; }
+.pf .pf-status { color: var(--pf-soft); font-size: 0.98rem; }
+
+.pf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+.pf a.pf-btn {
+  display: inline-block;
+  padding: 0.6em 1.15em;
+  border: 1px solid var(--pf-ink);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+.pf a.pf-btn:hover { background: var(--pf-ink); color: #0d1226 !important; }
+.pf a.pf-btn--main { background: var(--pf-pink); border-color: var(--pf-pink); color: #1a0f16; }
+.pf a.pf-btn--main:hover { background: #fff; border-color: #fff; color: #1a0f16 !important; }
+
+/* ---------- Pop-out photo ----------
+   The card sits in the bottom ~80% of the box. The photo layer is full
+   height but clipped to the card's sides and bottom only, so the head
+   can rise above the card's top edge. ME.png must be a transparent cutout. */
+.pf-photo {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1.1;
+  margin: 0 auto;
+}
+.pf-photo-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 80%;
+  overflow: hidden;
+  background: #1d2440;
+  border-radius: 6px;
+}
+.pf .pf-photo-bg img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pf-photo-clip {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 0 0 round 0 0 6px 6px);
+}
+.pf .pf-photo-me {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+/* =========================================================
+   PROJECTS
+   ========================================================= */
+.pf-project + .pf-project {
+  margin-top: 56px;
+  padding-top: 56px;
+  border-top: 1px solid var(--pf-rule);
+}
+.pf h3.pf-h3 {
+  font-family: var(--pf-serif);
+  font-size: clamp(1.5rem, 3vw, 1.85rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+/* Spec table: Role / Type / Downloads / Tools */
+.pf-spec {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  max-width: 44rem;
+  margin: 0 0 30px;
+  border-top: 1px solid var(--pf-rule);
+  font-size: 0.95rem;
+}
+.pf-spec dt, .pf-spec dd {
+  margin: 0;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--pf-rule);
+}
+.pf-spec dt { color: var(--pf-soft); }
+.pf-spec dd { color: var(--pf-ink); }
+.pf-num {
+  font-family: var(--pf-mono);
+  font-weight: 700;
+  color: var(--pf-pink);
+}
+
+/* Screenshots / GIFs */
+.pf-figs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0 0 26px;
+}
+.pf-fig { margin: 0; min-width: 0; }
+.pf-shot {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0a0f20;
+  border: 1px solid var(--pf-rule);
+}
+.pf-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* never crops a spreadsheet */
+  cursor: zoom-in;
+}
+.pf-shot img:focus-visible { outline: 2px solid var(--pf-pink); outline-offset: -2px; }
+.pf-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 16px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--pf-soft);
+  border: 1px dashed rgba(233, 237, 245, 0.3);
+}
+.pf-ph b { color: var(--pf-ink); font-weight: 600; }
+.pf .pf-fig figcaption {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--pf-soft);
+}
+
+/* One-line pipeline, set like a build log */
+.pf .pf-pipeline {
+  max-width: 44rem;
+  margin: 0 0 24px;
+  padding: 10px 14px;
+  font-family: var(--pf-mono);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--pf-teal);
+  background: rgba(0, 0, 0, 0.28);
+  border-left: 1px solid var(--pf-rule);
+}
+.pf .pf-pipeline span { color: var(--pf-soft); }
+
+/* Plain bullet lists */
+.pf ul.pf-list {
+  max-width: 44rem;
+  margin: 0 0 22px;
+  padding-left: 1.2em;
+  list-style: disc;
+}
+.pf ul.pf-list li { padding-left: 0.3em; margin-bottom: 0.75em; }
+.pf ul.pf-list li::marker { color: var(--pf-pink); }
+
+.pf .pf-links { font-size: 0.95rem; color: var(--pf-soft); margin: 0; }
+
+/* =========================================================
+   CROSS-DISCIPLINARY + ABOUT
+   ========================================================= */
+.pf .pf-audio {
+  font-family: var(--pf-serif);
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.pf-about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.pf-about .pf-photo { max-width: 260px; }
+.pf .pf-facts { color: var(--pf-soft); font-size: 0.95rem; }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.pf-footer {
+  border-top: 1px solid var(--pf-rule);
+  padding: 40px 24px 48px;
+}
+.pf-footer-inner { max-width: 1040px; margin: 0 auto; }
+.pf-footer h2.pf-footer-title {
+  font-family: var(--pf-serif);
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.pf-footer .pf-small { font-size: 0.85rem; color: var(--pf-soft); margin: 18px 0 0; }
+
+/* =========================================================
+   LIGHTBOX (click a screenshot to view full size)
+   ========================================================= */
+.pf-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100001;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  background: rgba(3, 6, 15, 0.94);
+  cursor: zoom-out;
+}
+.pf-lightbox.is-open { display: flex; }
+.pf-lightbox img { max-width: 96vw; max-height: 84vh; }
+.pf-lightbox p.pf-lightbox-cap {
+  max-width: 60em;
+  margin: 0;
+  font-family: var(--pf-sans);
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--pf-soft);
+}
+button.pf-lightbox-close {              /* undo main.css's invisible-button rule */
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  height: auto;
+  line-height: 1;
+  overflow: visible;
+  padding: 4px 12px;
+  font-size: 2.4rem;
+  color: #fff !important;
+  background: transparent;
+}
+
+/* ---------- Snow mode: just cool the accents ---------- */
+body.dark-mode .pf-num,
+body.dark-mode .pf .pf-pipeline { color: #ffffff; }
+body.dark-mode .pf ul.pf-list li::marker { color: #bae2f0; }
+body.dark-mode .pf a.pf-btn--main { background: #fff; border-color: #fff; }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 860px) {
+  .pf-hero { grid-template-columns: 1fr; gap: 40px; padding-top: 40px; }
+  .pf-hero .pf-photo { max-width: 260px; margin: 0; }
+}
+@media (max-width: 680px) {
+  :root { --pf-header-h: 80px; }
+  .pf { padding: 0 16px 56px; font-size: 16px; }
+  .pf-figs { grid-template-columns: 1fr; }
+  .pf-spec { grid-template-columns: 6.5rem minmax(0, 1fr); }
+  .pf h2.pf-h2 { font-size: 1.7rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

@@ -1,165 +1,298 @@
-<!DOCTYPE HTML>
-<title>Michael Chow Game Design Portfolio</title>
-<div id="PORTFOLIO">
-	
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Rubik+Spray+Paint&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Rubik+Spray+Paint&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Rubik+Spray+Paint&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <title>Michael Chow | Systems Design, Production &amp; Data Pipelines</title>
+  <meta name="description" content="Systems & Content Design · Production · Data Pipelines | CS & Game Dev Senior at Northeastern University" />
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <!-- Link previews (LinkedIn / Discord / Slack). TODO: make a 1200x630 preview image -->
+  <meta property="og:title" content="Michael Chow | Systems & Content Designer" />
+  <meta property="og:description" content="Data-driven systems & content design. 30,000+ downloads across shipped projects." />
+  <meta property="og:image" content="images/gd/og-preview.png" />
+  <link rel="icon" href="images/LOGO.png" />
 
-				
-				
-				<!-- Header -->
-					<header id="header">
-						
-						<h1><a href="index.html">MICHAEL CHOW GAME DEV</a></h1><br/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
-							<!-- Logo -->
-								<a class="logo">
-									<span class="symbol"><button onclick="toggleDarkMode()"><img src="images/LOGO.png" alt="" /></button></span>
-									<!--<span class="symbol"><button onclick="location.href='#';"><img src="images/LOGO.png" alt="" /></button>-->
-								</a>
+  <!-- Shared site style (same file the audio page uses), then this page's layer -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/gamedesign-v2.css" />
+</head>
 
-								<!-- <div class="snowbutton">
-									<span class="snowsymbol"><button onclick="toggleDarkMode()"><img src="images/SNOWFLAKE.png" alt="" /></button>
-									</div> -->
+<body class="pf-page">
 
-								<!-- MY NAVIGATION BAR -->
-								<div class="NAVIGATION">
-								<nav>
-									
-									<a href="#PORTFOLIO">PORTRAITS</a>
-									<a href="#GAMEDESIGN">GAME DESIGN</a>
-									<a href="#ABOUTME">ABOUT</a>
-									
-									<a href="tel:508-905-9534" class="icon solid style2 fa-phone sussy-icon"></a>
-									<a href="mailto:mikechowaudio@gmail.com" target="_blank" class="icon solid style2 fa-envelope sussy-icon"></a>
-									
-									
-									</nav>
-								</div>
+  <!-- Snow mode (shared with the audio page; driven by util.js) -->
+  <div id="blizzard-overlay"></div>
+  <div class="snow">
+    <canvas class="snow1"></canvas>
+    <canvas class="snow2"></canvas>
+  </div>
+  <!-- util.js expects this element; hidden so it doesn't throw errors -->
+  <div id="cursor-follower" style="display:none"></div>
 
-								
+  <!-- ================= HEADER (same as the audio page) ================= -->
+  <header id="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="logo-container" onclick="toggleDarkMode()" title="Click for Snow!">
+          <img src="images/LOGO.png" alt="Logo" />
+        </div>
+        <h1 class="brand-name"><a href="#top">MICHAEL CHOW</a></h1>
+      </div>
 
-					</header>
+      <nav class="desktop-nav" aria-label="Main">
+        <a href="#projects">PROJECTS</a>
+        <a href="#about">ABOUT</a>
+        <a href="../index.html">AUDIO</a>
+        <!-- TODO: point to your DESIGN-focused resume PDF -->
+        <a href="../resume/ChowResume.pdf" target="_blank" rel="noopener">RESUME</a>
+        <span class="divider">|</span>
+        <div class="social-icons">
+          <a href="mailto:mikebchow@gmail.com" class="icon solid fa-envelope" title="Email Me" aria-label="Email"></a>
+          <a href="https://www.linkedin.com/in/mikethemicguy" target="_blank" rel="noopener" class="icon brands fa-linkedin" title="LinkedIn" aria-label="LinkedIn"></a>
+          <a href="https://github.com/devvyyy" target="_blank" rel="noopener" class="icon brands fa-github" title="GitHub" aria-label="GitHub"></a>
+        </div>
+      </nav>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-								
-							<div id="LABELTEXT">
-								<strong><h2>PORTRAITS</h2></strong>
-								</div>
+      <button id="pf-menu-btn" class="hamburger pf-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="pf-mobile-menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
 
-							<div class="imageContainer">
-
-								<img src="images/fegbastuff.png"/>
-						
-						</div> 
-							
-						<div id="PARAGRAPHSNEW">
-							<p>A compilation of portraits created for various projects throughout the years, with some being commission work. These portraits all follow a 16-color indexed palette, and fit under a strict box called the “hackbox”; a 96 by 80 pixel box that isn’t a perfect square, with the edges being cut off to fit GBA hardware limitations. My main focus is on game art and animation that tries to remain as faithful as possible to the original style while also integrating my own unique style, while also using my programming knowledge to bypass some technical limitations in order to make these insertable for GBA software.</p>
-						</div>
-
-								<a class="anchor" id="GAMEDESIGN"></a>
-								<a name="GAMEDESIGN"></a>
-								</a>
-
-								
-					
-								<div class="container">
-								
-									<div id="LABELTEXT">
-										<strong><h2>GAME DESIGN</h2></strong>
-										</div>			
-
-								</div>
-
-								<div class="GifContainer">
-									<img src="images/ItalianDessert.png">
-									<img src="images/AffoAttack.gif">
-									<img src="images/MoreMorePrologue.png">
-									<img src="images/PrologueLOL.png">
-									<img src="images/STACKSDISPLAY.gif">
-									<img src="images/CHOICE.png">
-
-									<img src="images/ItsRed.png">
-									<img src="images/absolutecinema.gif">
-									<img src="images/CG.png">
-
-									<img src="images/FlorisSkill.png">
-									<img src="images/OBJECTIVECHANGE.gif">
-									<img src="images/MorePrologue.png">
-
-									<img src="images/DOUBLE.png">
-									<img src="images/COMBAT.gif">
-									<img src="images/TURRET.png">
-									
-									<div id="PARAGRAPHSNEW">
-										<p>
-											<strong>ETERNAL WINTER</strong> is a personal project built with a makefile. It is a ROM Hack of FE8 that aims to make a custom game using only the engine as a base, and features a completely custom campaign, with entirely custom assets that utilize a custom framework. Developed from the ground up, the framework is largely written in and extended in using ARM assembly, and includes C and Python, so in order to work with this framework, I've had to learn how to write ARM, and how to integrate my design vision with what the framework expects. For example, the framework has a few different stages that transform different parameters of the combat; and different stages have access to different kinds of information, so a challenge was balancing the amount of ASM calls with emulator performance.
-										</p>
-										<p>
-											This project was initially created so I could practice my programming, art, and music skills, and later became a comprehensive exercise in game development. Throughout the dev process, I learned pixel art, animation, and programming such as ASM, C, and Python from scratch, as well as how to integrate these assets into the system architecture and optimize them so they render correctly in-game and fit within technical limitations. Levels are built through an internal scripting language as well as custom domain-specific tools, and utilize extensive low-level programming logic to push the limits of the GBA hardware.
-										</p>
-										<p>
-											A major focus of my work has been on player agency—developing dynamic mechanics that utilize bitflag manipulation, action structs, and unit states, and creating my own intuitive UI elements, and modular interface enhancements, including stack indicators and toggle functions, to form a more fluid and engaging experience. Another focus was on ways to bypass or utilize the GBA’s hardware limitations; for example, the limit of playing 10 tracks, 8 sounds (at once) was bypassed through relocating RAM, up to a max of 16 tracks, 12 sounds without sacrificing performance. I also optimized internal OAM allocation to prevent memory overflow errors within the constraint of GBA hardware, ensuring smooth sprite rendering within the hardware’s constraints.
-										</p>
-
-									</div>
-								</div>
-
-							
-							<div id="LABELTEXT"><strong><h2>ABOUT ME</h2></strong></div>
-							<div id="ABOUTME">
-								<p>Hi! I’m <strong>Michael</strong>, a developer, artist, writer, and composer in the Boston area with a passion for pushing the limits of hardware while keeping project restrictions and scope in mind. I specialize in low-level programming and system optimization, with experience in ARM assembly, C, and Python. Working within the constraints of the GBA hardware has been both a challenge and a rewarding technical exercise. I’ve also worked with Unity, as well as Lex Talionis, a PyGame-based engine that utilizes a bespoke query and eventing language. In addition, I also work with web development; specifically UI/UX with Figma, and implementation through HTML, JS, and CSS. Beyond programming, I also work on visual art, writing, and audio; I’ve also created many of the visual and audio assets for my projects, learning pixel art, animation, sound design, and music composition along the way. My design philosophy centers on player agency, interaction, and fluidity, leading me to develop custom UI enhancements, a focus on responsive UX, dynamic gameplay mechanics, and modular systems that make the game feel intuitive and responsive.
-								</p>
-								<p>If you’re interested in my work, feel free to reach out or follow my progress! I also do 
-									<a href="../index.html">sound design!</a>
-								</p>
-							</div>
-
-							<div id="LABELTEXT"><strong><h2>CONTACT</h2></strong></div>
-							<div id="CONTACT">
-
-							<!--SNOW BG EFFECT-->
-							<div class="snow">
-							<canvas class="snow1"></canvas>
-							<canvas class="snow2"></canvas>
-						</div>
-
-						</div>
-						</div>
-					</div>
-				</div>
-
-				<ul class="icons">
-					<li><a href="tel:508-905-9534" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
-					<li><a href="mailto:mikechowaudio@gmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
-					<li><a href="https://github.com/devvyyy" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+    <nav id="pf-mobile-menu" class="mobile-nav" aria-label="Mobile">
+      <a href="#projects">PROJECTS</a>
+      <a href="#about">ABOUT</a>
+      <a href="../index.html">AUDIO PORTFOLIO</a>
+      <a href="../resume/ChowResume.pdf" target="_blank" rel="noopener">RESUME</a>
+      <div class="mobile-socials">
+        <a href="mailto:mikebchow@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://www.linkedin.com/in/mikethemicguy" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </nav>
+  </header>
 
 
-					
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  <main class="pf" id="top">
 
-	</body>
+    <!-- ================= INTRO ================= -->
+    <section class="pf-hero" aria-label="Introduction">
+      <div>
+        <h1 class="pf-name">Michael Chow</h1>
+        <p class="pf-role">Systems Design · Game Production · Data Pipelines<br>CS &amp; Game Dev Senior at Northeastern University</p>
+
+        <div class="pf-measure">
+          <p class="pf-intro">Hi, I'm Mike! I love game systems, production, and technical pipelines.
+            As an avid player of midcore mobile strategy titles like Fire Emblem Heroes and Wild Rift, I’m drawn to how hero kits, progression curves, and live economies work under the hood. Whether I’m balancing combat math in Excel, scripting build pipelines, or coordinating asset handoffs between art and engineering, I enjoy turning complex mechanics into well-tuned, shippable builds.</p>
+
+          <!-- TODO: update per application -->
+          <p class="pf-status">Looking for a Systems / Content Design co-op for Spring 2027 (Jan–May) in the Boston area.</p>
+        </div>
+
+        <div class="pf-actions">
+          <a class="pf-btn pf-btn--main" href="../resume/ChowResume.pdf" target="_blank" rel="noopener">View Resume</a>
+          <a class="pf-btn" href="mailto:mikebchow@gmail.com">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Pop-out photo: ME.png must be a cutout (transparent PNG), cropped so your hair touches the top edge.
+           ISEC.png is the card behind you. -->
+      <div class="pf-photo">
+        <div class="pf-photo-bg"><img src="images/ISEC.png" alt=""></div>
+        <div class="pf-photo-clip"><img class="pf-photo-me" src="images/ME.png" alt="Michael Chow"></div>
+      </div>
+    </section>
+
+
+    <!-- ================= PROJECTS =================
+         Projects 2 & 3 are saved in projects-later.html; paste them back in
+         right after Project 1's closing </article>. -->
+    <section class="pf-section" id="projects">
+      <h2 class="pf-h2">Projects</h2>
+
+      <!-- ---------- PROJECT 1 ---------- -->
+      <article class="pf-project" id="project-fe-engine">
+        <h3 class="pf-h3">Eternal Winter: Custom FE Engine Hack</h3>
+
+        <dl class="pf-spec">
+          <dt>Role</dt>      <dd>Lead Systems Designer &amp; Programmer</dd>
+          <dt>Type</dt>      <dd>Solo project, GBA Fire Emblem engine hack</dd>
+          <dt>Downloads</dt> <dd><span class="pf-num">6,000+</span></dd>
+          <!-- TODO: delete any tools you didn't use -->
+          <dt>Tools</dt>     <dd>Event Assembler / ColorzCore, c2ea, ARM THUMB ASM, lyn, Excel / Sheets, Git</dd>
+        </dl>
+
+        <div class="pf-figs">
+          <figure class="pf-fig">
+            <div class="pf-shot">
+              <img src="images/sheets.png" alt="Spreadsheet of hero base stats and growth rates">
+            </div>
+            <figcaption>Base stats and growth rates for all 50+ heroes. One row per unit, and it goes straight into the build.</figcaption>
+          </figure>
+          <figure class="pf-fig">
+            <div class="pf-shot">
+              <img src="images/gameplay.gif" alt="Gameplay of custom skills proccing.">
+            </div>
+            <figcaption>Custom skills proccing in GBA emulation.</figcaption>
+          </figure>
+        </div>
+
+        <!-- TODO: make sure every step matches your real toolchain -->
+        <p class="pf-pipeline"><span>pipeline:</span> Excel → CSV export → c2ea → Event Assembler + lyn-linked ASM → patched GBA ROM → playtest</p>
+
+        <ul class="pf-list">
+          <li>
+            Took mechanics I love from <strong>Fire Emblem Heroes</strong> and <strong>League of Legends</strong>
+            (overloaded mechanics, incredibly complex interactions),
+            reverse-engineered how they actually work, and rebuilt them inside the GBA Fire Emblem engine. All told, that's
+            <strong>custom skills across 50+ heroes</strong>, written in <strong>custom ASM</strong>: hand-written ARM THUMB routines
+            hooked into the battle calculations, placed in free space, assembled into the ROM with Event Assembler (ColorzCore),
+            and linked with lyn.
+          </li>
+          <li>
+            Built a <strong>data-driven implementation pipeline</strong> so I'd never have to hex-edit anything. I
+            <strong>used CSV spreadsheets and buildfiles</strong>: every hero, class, item, and skill lives in a sheet, and one
+            build turns all of it into a playable ROM. It's all in Git, and most balance changes come down to editing a single cell.
+          </li>
+          <li>
+            From that same data, I <strong>tuned progressions and encounters</strong>: base stats, growth rates, and level curves
+            for every hero, plus enemy placement, reinforcement timing, and how each difficulty mode scales. Spreadsheet formulas
+            got the numbers close, and full playthroughs showed me where they were still wrong.
+          </li>
+        </ul>
+
+        <p class="pf-links"><a href="https://github.com/devvyyy/Devvy-Hack" target="_blank" rel="noopener">Buildfile Repo</a></p>
+      </article>
+    </section>
+
+
+    <!-- ================= CROSS-DISCIPLINARY ================= -->
+    <section class="pf-section" id="cross-disciplinary">
+      <h2 class="pf-h2">Cross-Disciplinary Integration</h2>
+      <div class="pf-measure">
+        <p>
+          Before I got into game design, I did <strong>audio design</strong>: sound effects, foley, and field recording. I also
+          draw my own <strong>custom 2D art</strong>. Making assets myself taught me the pipeline from the other side: what a
+          16-color palette does to a portrait, what a loop point needs to sound seamless, and how an engineer wants files named
+          before they go into the build. It makes it easier to talk with artists, sound designers, and engineers, and it means
+          assets usually land in the build the first time instead of bouncing back and forth.
+        </p>
+        <!-- Audio portfolio = the root index.html, one folder up -->
+        <p><a class="pf-audio" href="../index.html">Looking for my Audio Design work? View my Sound Portfolio here.</a></p>
+      </div>
+    </section>
+
+
+    <!-- ================= ABOUT (photo centered) ================= -->
+    <section class="pf-section" id="about">
+      <h2 class="pf-h2">About Me</h2>
+      <div class="pf-about">
+        <!-- TODO (optional): use a different photo here than the one at the top -->
+        <div class="pf-photo">
+          <div class="pf-photo-bg"><img src="images/ISEC.png" alt=""></div>
+          <div class="pf-photo-clip"><img class="pf-photo-me" src="images/ME.png" alt="Michael Chow"></div>
+        </div>
+
+        <div class="pf-measure">
+          <p>
+            <strong>Fire Emblem Heroes</strong> is the game I keep coming back to. I've played midcore mobile games for
+            years</span>, and what hooks me is the kits: how one new skill changes which units are worth
+            building, or breaks open a map you thought you'd already solved. Eventually I started rebuilding them myself, on a
+            Game Boy Advance, a 16&nbsp;MHz handheld with under 300&nbsp;KB of RAM. If a kit is too tangled to fit on that
+            hardware, it's usually too tangled for players to follow, too.
+          </p>
+          <p>
+            Studying CS means my work doesn't stop at the design doc. When a playtester says a unit feels too strong, I can change
+            the number, rebuild, and have a new version to try that afternoon. And when I need something from an engineer, I
+            usually understand what I'm asking for before I ask.
+          </p>
+          
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="pf-footer" id="contact">
+    <div class="pf-footer-inner">
+      <h2 class="pf-footer-title">Let's connect!</h2>
+      <!-- TODO: your audio page uses two different emails; pick one -->
+      <p><a href="mailto:mikebchow@gmail.com">mikebchow@gmail.com</a> · <a href="https://www.linkedin.com/in/mikethemicguy" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/devvyyy" target="_blank" rel="noopener">GitHub</a></p>
+      <p class="pf-small">© <span id="pf-year">2026</span> Michael Chow · Click the logo for snow!</p>
+    </div>
+  </footer>
+
+
+  <!-- Lightbox: click any project image to view it full size -->
+  <div id="pf-lightbox" class="pf-lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="pf-lightbox-close" aria-label="Close">&times;</button>
+    <img alt="" />
+    <p class="pf-lightbox-cap"></p>
+  </div>
+
+
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/util.js"></script>
+  <script>
+  (function () {
+    // Still let the logo toggle snow mode if util.js didn't load
+    if (typeof window.toggleDarkMode !== 'function') {
+      window.toggleDarkMode = function () { document.body.classList.toggle('dark-mode'); };
+    }
+    // util.js scrolls #anchors to the exact top (under the sticky header); CSS handles it instead
+    if (window.jQuery) { window.jQuery('a[href^="#"]').off('click'); }
+
+    // Mobile menu
+    var btn = document.getElementById('pf-menu-btn');
+    var menu = document.getElementById('pf-mobile-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('active');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          menu.classList.remove('active');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Lightbox
+    var lb = document.getElementById('pf-lightbox');
+    var lbImg = lb.querySelector('img');
+    var lbCap = lb.querySelector('.pf-lightbox-cap');
+    function closeLb() {
+      lb.classList.remove('is-open');
+      document.body.style.overflow = '';
+      lbImg.removeAttribute('src');
+    }
+    document.querySelectorAll('.pf-shot img').forEach(function (img) {
+      img.setAttribute('tabindex', '0');
+      function openLb() {
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt;
+        var cap = img.closest('figure') && img.closest('figure').querySelector('figcaption');
+        lbCap.textContent = cap ? cap.textContent : img.alt;
+        lb.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+      img.addEventListener('click', openLb);
+      img.addEventListener('keydown', function (e) { if (e.key === 'Enter') openLb(); });
+    });
+    lb.addEventListener('click', function (e) { if (e.target !== lbImg) closeLb(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+
+    document.getElementById('pf-year').textContent = new Date().getFullYear();
+
+    var todos = document.querySelectorAll('.pf-todo, .pf-ph').length;
+    if (todos) { console.info('[portfolio] ' + todos + ' TODO / placeholder spots left to fill.'); }
+  })();
+  </script>
+</body>
 </html>
+
